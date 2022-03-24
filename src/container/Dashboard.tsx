@@ -3,8 +3,10 @@ import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import NewLink from "../components/NewLink";
 import UserLinks from "../components/UserLinks";
+import { usePersistence } from "../hooks/usePersistence";
 
 const Dashboard = () => {
+  const [links, setLinks] = usePersistence("links", []);
   return (
     <div className="page__container">
       <Navbar hideGetStarted />
@@ -19,7 +21,7 @@ const Dashboard = () => {
         </div>
         <div className="mx-4 my-2">
           <Container title="Your Links">
-            <UserLinks links={["test"]} />
+            <UserLinks links={links} />
           </Container>
         </div>
       </div>
