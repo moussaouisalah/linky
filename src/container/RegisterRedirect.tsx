@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useLinkDetails } from "../hooks/useLinkDetails";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { registerVisit } from "../helpers";
-import { Link } from "../models/link";
+import { Link as LinkType } from "../models/link";
 import { Visit } from "../models/visit";
+import Spinner from "../components/Spinner";
 
 const RegisterRedirect = () => {
   const { id } = useParams();
@@ -16,10 +17,10 @@ const RegisterRedirect = () => {
     if (geolocationLoading || linkLoading) return;
     if (geolocation === undefined || linkDetails === undefined) return;
     if (!geolocationError && !linkError) {
-      registerVisit(linkDetails as Link, geolocation as Visit);
+      registerVisit(linkDetails as LinkType, geolocation as Visit);
     }
     if (linkDetails) {
-      window.location.href = (linkDetails as Link).redirectTo;
+      window.location.href = (linkDetails as LinkType).redirectTo;
     }
   }, [
     geolocation,
@@ -30,15 +31,26 @@ const RegisterRedirect = () => {
     linkError,
   ]);
 
-  if (linkError) {
-    return <div>Error 404</div>;
-  }
-
-  if (linkLoading) {
-    return <div>loading...</div>;
-  }
-
-  return <div>Please Wait, we are redirecting you</div>;
+  const message = linkError
+    ? "Error 404"
+    : linkLoading
+    ? "loading..."
+    : "Please Wait, we are redirecting you...";
+  return (
+    <div className="page__container flex flex-col gap-3 justify-center items-center">
+      <p>{message}</p>
+      {linkError ? (
+        <Link
+          to="/"
+          className="text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+        >
+          Home
+        </Link>
+      ) : (
+        <Spinner />
+      )}
+    </div>
+  );
 };
 
 export default RegisterRedirect;

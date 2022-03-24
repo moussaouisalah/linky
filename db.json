@@ -12,6 +12,15 @@
           "device": "",
           "referrer": "",
           "createdAt": 1648120442765
+        },
+        {
+          "ip": "197.230.252.44",
+          "country": "Morocco",
+          "browser": "Google Chrome or Chromium",
+          "os": "Win32",
+          "device": "",
+          "referrer": "",
+          "createdAt": 1648121096657
         }
       ]
     }

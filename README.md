@@ -1,7 +1,6 @@
 ## TODO
 
 - style new generated link data
-- style redirection page
 - add link to table
 - add copy button to table
 - show notification after link copied
