@@ -12,11 +12,13 @@ import { useLinksByIds } from "../hooks/useLinksByIds";
 import Spinner from "../components/Spinner";
 import { useState } from "react";
 import OverlaySpinner from "../components/OverlaySpinner";
+import ShowGeneratedLink from "../components/ShowGeneratedLink";
 
 const Dashboard = () => {
   const [linksIds, setLinkIds] = usePersistence("links", []);
   const [links, loadingLinks] = useLinksByIds(linksIds);
   const [loadingNewLinkRegister, setLoadingNewLinkRegister] = useState(false);
+  const [generatedLink, setGeneratedLink] = useState<Link | null>(null);
 
   const handleAddLink = (verifiedUrl: string) => {
     setLoadingNewLinkRegister(true);
@@ -27,6 +29,7 @@ const Dashboard = () => {
     };
     registerNewLink(newLink)
       .then(() => {
+        setGeneratedLink(newLink);
         setLinkIds([...linksIds, newLink.id]);
       })
       .catch(() => {})
@@ -44,7 +47,14 @@ const Dashboard = () => {
         </div>
         <div className="mx-4 my-2">
           <Container title="New Link">
-            <NewLink onCreate={handleAddLink} />
+            {generatedLink ? (
+              <ShowGeneratedLink
+                link={generatedLink}
+                onGenerateNew={() => setGeneratedLink(null)}
+              />
+            ) : (
+              <NewLink onCreate={handleAddLink} />
+            )}
             {loadingNewLinkRegister && <OverlaySpinner />}
             {loadingNewLinkRegister && <p>test</p>}
           </Container>

@@ -1,3 +1,19 @@
 {
-  "links": []
+  "links": [
+    {
+      "id": "e216260c-aa25-448a-9d9e-e67544a642bb",
+      "redirectTo": "https://google.com",
+      "visits": [
+        {
+          "ip": "197.230.252.44",
+          "country": "Morocco",
+          "browser": "Google Chrome or Chromium",
+          "os": "Win32",
+          "device": "",
+          "referrer": "",
+          "createdAt": 1648120442765
+        }
+      ]
+    }
+  ]
 }
