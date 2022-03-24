@@ -40,7 +40,7 @@ const Breadcrumbs = ({ items }: Props) => {
     <Container>
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         {items.map((item, index) => (
-          <li className="inline-flex items-center">
+          <li className="inline-flex items-center" key={index}>
             {item.link ? (
               <Link
                 to={item.link}

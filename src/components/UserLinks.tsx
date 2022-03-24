@@ -1,7 +1,8 @@
+import { Link } from "../models/link";
 import UserLinksTableItem from "./UserLinksTableItem";
 
 type Props = {
-  links: string[];
+  links: Link[];
 };
 
 const UserLinks = ({ links }: Props) => {
@@ -11,11 +12,9 @@ const UserLinks = ({ links }: Props) => {
         <div className="relative overflow-x-auto sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-400">
             <tbody>
-              <UserLinksTableItem />
-              <UserLinksTableItem />
-              <UserLinksTableItem />
-              <UserLinksTableItem />
-              <UserLinksTableItem />
+              {links.map((link) => (
+                <UserLinksTableItem key={link.id} link={link} />
+              ))}
             </tbody>
           </table>
         </div>

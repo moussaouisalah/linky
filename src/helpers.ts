@@ -42,3 +42,19 @@ export function registerVisit(link: Link, visit: Visit) {
     visits: [...link.visits, visit],
   });
 }
+
+export function registerNewLink(link: Link) {
+  return axios.post(API_BASE_URL + "/links", link);
+}
+
+export function verifyUrl(link: string) {
+  let url;
+
+  try {
+    url = new URL(link);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}

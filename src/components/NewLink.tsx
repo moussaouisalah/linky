@@ -1,4 +1,24 @@
-const NewLink = () => {
+import { useState } from "react";
+import { verifyUrl } from "../helpers";
+
+type Props = {
+  onCreate: (verifiedUrl: string) => void;
+};
+
+const NewLink = ({ onCreate }: Props) => {
+  const [linkInput, setLinkInput] = useState("");
+  const [isBadUrl, setBadUrl] = useState(false);
+
+  const handleGenerateLink = () => {
+    if (!verifyUrl(linkInput)) {
+      setBadUrl(true);
+      return;
+    }
+    onCreate(linkInput);
+    setLinkInput("");
+    setBadUrl(false);
+  };
+
   return (
     <div className="w-full">
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -24,12 +44,19 @@ const NewLink = () => {
           </div>
           <input
             type="text"
-            id="email-adress-icon"
-            className="border text-sm rounded-lg block w-full pl-10 p-2.5  bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            value={linkInput}
+            onChange={(e) => setLinkInput(e.target.value)}
+            className={
+              "border text-sm rounded-lg block w-full pl-10 p-2.5  bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 " +
+              (isBadUrl ? "border-red-500" : "")
+            }
             placeholder="https://example.com"
           />
         </div>
-        <button className="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800">
+        <button
+          onClick={handleGenerateLink}
+          className="text-white focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800"
+        >
           Generate
         </button>
       </div>
