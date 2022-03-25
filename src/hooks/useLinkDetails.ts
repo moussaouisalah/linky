@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../environment";
 import { Link } from "../models/link";
 
-export function useLinkDetails(id: string) {
+export function useLinkDetails(
+  id: string
+): [details: Link | null | undefined, error: string | null, loading: boolean] {
   const [details, setDetails] = useState<Link | null | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);

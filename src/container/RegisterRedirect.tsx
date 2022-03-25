@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useLinkDetails } from "../hooks/useLinkDetails";
