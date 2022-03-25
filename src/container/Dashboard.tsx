@@ -1,4 +1,3 @@
-import axios from "axios";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
@@ -13,6 +12,7 @@ import Spinner from "../components/Spinner";
 import { useState } from "react";
 import OverlaySpinner from "../components/OverlaySpinner";
 import ShowGeneratedLink from "../components/ShowGeneratedLink";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const [linksIds, setLinkIds] = usePersistence("links", []);
@@ -23,7 +23,7 @@ const Dashboard = () => {
   const handleAddLink = (verifiedUrl: string) => {
     setLoadingNewLinkRegister(true);
     const newLink: Link = {
-      id: uuidv4(),
+      id: uuidv4().slice(0, 8),
       redirectTo: verifiedUrl,
       visits: [],
     };
@@ -56,7 +56,6 @@ const Dashboard = () => {
               <NewLink onCreate={handleAddLink} />
             )}
             {loadingNewLinkRegister && <OverlaySpinner />}
-            {loadingNewLinkRegister && <p>test</p>}
           </Container>
         </div>
         <div className="mx-4 my-2">
@@ -65,6 +64,7 @@ const Dashboard = () => {
           </Container>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
