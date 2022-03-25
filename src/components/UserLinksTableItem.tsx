@@ -17,7 +17,7 @@ const UserLinksTableItem = ({ link }: Props) => {
       >
         {link.redirectTo}
       </th>
-      <td className="px-6 py-4">
+      <td className="px-6 py-4 flex items-center">
         <span className="mr-2">{`${BASE_URL}/${link.id}`} </span>
         <CopyButton link={`${BASE_URL}/${link.id}`} />
       </td>
