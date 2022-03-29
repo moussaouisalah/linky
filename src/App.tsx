@@ -4,6 +4,7 @@ import Home from "./container/Home";
 import RegisterRedirect from "./container/RegisterRedirect";
 import UrlStats from "./container/UrlStats";
 import Dashboard from "./container/Dashboard";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path=":id" element={<RegisterRedirect />} />
         <Route path="dashboard" element={<Dashboard />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

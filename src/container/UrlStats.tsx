@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
+import BrowsersCountDetails from "../components/BrowsersCountDetails";
+import ClicksTable from "../components/ClicksTable";
 import Container from "../components/Container";
+import LinkDetails from "../components/LinkDetails";
+import LocationsCountDetails from "../components/LocationsCountDetails";
 import Navbar from "../components/Navbar";
 import Spinner from "../components/Spinner";
 import { useLinkDetails } from "../hooks/useLinkDetails";
@@ -10,7 +14,7 @@ const UrlStats = () => {
   const [linkDetails, linkError, linkLoading] = useLinkDetails(id!);
 
   return (
-    <div className="page__container">
+    <div className="page__container pb-2">
       <Navbar hideGetStarted />
       {linkLoading ? (
         <div className="w-full h-full flex justify-center items-center">
@@ -31,22 +35,22 @@ const UrlStats = () => {
           </div>
           <div className="mx-4 my-2">
             <Container title="Link Details">
-              <p>TODO</p>
+              <LinkDetails link={linkDetails} />
             </Container>
           </div>
           <div className="mx-4 my-2">
             <Container title="Users Locations">
-              <p>TODO</p>
+              <LocationsCountDetails visits={linkDetails.visits} />
             </Container>
           </div>
           <div className="mx-4 my-2">
-            <Container title="Referrers">
-              <p>TODO</p>
+            <Container title="Browsers">
+              <BrowsersCountDetails visits={linkDetails.visits} />
             </Container>
           </div>
           <div className="mx-4 my-2">
             <Container title="All Clicks">
-              <p>{JSON.stringify(linkDetails)}</p>
+              <ClicksTable visits={linkDetails.visits} />
             </Container>
           </div>
         </div>

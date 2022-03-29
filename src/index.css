@@ -16,6 +16,7 @@ html,
 .page__container {
   width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .page__container {

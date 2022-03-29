@@ -12,7 +12,6 @@ import Spinner from "../components/Spinner";
 import { useState } from "react";
 import OverlaySpinner from "../components/OverlaySpinner";
 import ShowGeneratedLink from "../components/ShowGeneratedLink";
-import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const [linksIds, setLinkIds] = usePersistence("links", []);
@@ -64,7 +63,6 @@ const Dashboard = () => {
           </Container>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

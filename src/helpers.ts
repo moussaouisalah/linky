@@ -58,3 +58,25 @@ export function verifyUrl(link: string) {
 
   return url.protocol === "http:" || url.protocol === "https:";
 }
+
+export function getLocationsCounts(visits: Visit[]) {
+  return visits.reduce((locationsCounts, visit) => {
+    if (locationsCounts[visit.country]) {
+      locationsCounts[visit.country]++;
+    } else {
+      locationsCounts[visit.country] = 1;
+    }
+    return locationsCounts;
+  }, {} as { [key: string]: number });
+}
+
+export function getBrowsersCounts(visits: Visit[]) {
+  return visits.reduce((browsersCounts, visit) => {
+    if (browsersCounts[visit.browser]) {
+      browsersCounts[visit.browser]++;
+    } else {
+      browsersCounts[visit.browser] = 1;
+    }
+    return browsersCounts;
+  }, {} as { [key: string]: number });
+}
