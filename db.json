@@ -1,53 +1,9 @@
 {
   "links": [
     {
-      "id": "e216260c-aa25-448a-9d9e-e67544a642bb",
-      "redirectTo": "https://google.com",
-      "visits": [
-        {
-          "ip": "197.230.252.44",
-          "country": "Morocco",
-          "browser": "Google Chrome or Chromium",
-          "os": "Win32",
-          "device": "",
-          "referrer": "",
-          "createdAt": 1648120442765
-        },
-        {
-          "ip": "197.230.252.44",
-          "country": "Morocco",
-          "browser": "Google Chrome or Chromium",
-          "os": "Win32",
-          "device": "",
-          "referrer": "",
-          "createdAt": 1648121096657
-        }
-      ]
-    },
-    {
-      "id": "30a92988-c781-40ba-9014-957e02babb3b",
+      "id": "9660d0e9",
       "redirectTo": "https://google.com",
       "visits": []
-    },
-    {
-      "id": "c2896eb0",
-      "redirectTo": "https://test.com",
-      "visits": []
-    },
-    {
-      "id": "7e4b5ec0",
-      "redirectTo": "https://google.com",
-      "visits": [
-        {
-          "ip": "197.230.252.44",
-          "country": "Morocco",
-          "browser": "Google Chrome or Chromium",
-          "os": "Win32",
-          "device": "",
-          "referrer": "",
-          "createdAt": 1648212963142
-        }
-      ]
     }
   ]
 }

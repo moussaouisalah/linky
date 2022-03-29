@@ -1,6 +1,5 @@
 ## TODO
 
-- style new generated link data
 - calculate link stats
 - display link stats
 - remove link id from local storage if not found
