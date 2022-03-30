@@ -8,11 +8,11 @@ const Navbar = ({ hideGetStarted }: Props) => {
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 h-16 rounded-b dark:bg-gray-800 flex items-center">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="https://flowbite.com" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
             Linky
           </span>
-        </a>
+        </Link>
         <div className="flex justify-between items-center">
           <ul className="flex space-x-2 sm:space-x-8 md:text-sm md:font-medium">
             <li>
